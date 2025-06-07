@@ -1,0 +1,38 @@
+{% load static %}
+
+<header>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <!-- Logo -->
+      <div style="background-color: aqua">
+        <a class="navbar-brand" href="{% url 'home' %}"
+          ><img
+            src="{% static 'images/crossed-knife-and-fork.svg' %}"
+            alt="Logo"
+            class="logo"
+        /></a>
+      </div>
+      <!-- Navigation Items -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Calorie Search</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Recipe Search</a>
+          </li>
+        </ul>
+        <!-- Form for search field -->
+        <form class="d-flex" role="search">
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+</header>

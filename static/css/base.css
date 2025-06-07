@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=Roboto:wght@400;500&display=swap');
+
+/* Root Variables */
+:root {
+    /* Fonts */
+    --title: 'EB Garamond', serif;
+    --main-font: 'Roboto', sans-serif;
+
+    /* Colors */
+    --header-bg-color: #FFFFFF;
+    --body-bg-color: #E2FBE8;
+    --main-color: #5EC269;
+    --main-text-color: #212936;
+    --secondary-text-color: #4D5562;
+    --tertiary-text-color: #3C7E44;
+    --button-bg-inactive-color: #F3F4F6;
+    --nutrition-bg-color: #F2FDF5;
+}
+
+html, body {
+    height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--title);
+}
+
+/* Header */
+.navbar {
+    background-color: var(--header-bg-color);
+}
+
+a.nav-link {
+    color: var(--main-text-color)
+}
+
+img.logo {
+    width: 2rem;
+}

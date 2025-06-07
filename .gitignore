@@ -1,5 +1,8 @@
-#MacOS
+# MacOS
 .DS_Store
+
+# Prettier
+.prettierrc
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

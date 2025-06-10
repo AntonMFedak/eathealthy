@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static%} {% load mathfilters %}
+
+{% block content %}
+    <div class="container">
+
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center">
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="input-group input-group-lg mb-5 mt-5">
+                        <input type="text" name="query" class="form-control inputstyle"
+                            placeholder="search for calories in your food..." required>
+                        <button class="btn whoop" type="submit" id="button-addon2">Find calories</button>
+                    </div>
+                </form>
+                {% if data %}
+                <h1> {{data.0.name | capfirst}} has a total of <strong> {{data.0.calories}} Calories</strong> per 100 grams
+                    {% if data.0.calories > 300 %}
+                    <img src="{% static 'images/shocked.png' %}" class="img-responsive" />
+                    {% endif %}
+                </h1>
+                {% if data.0.sodium_mg > 120 %}
+                <div class="alert alert-danger d-flex align-items-center mt-3" role="alert">
+                    <div>
+                        This food contains a high amount of sodium! Too much sodium consumption can cause high blood pressure, leading to heart disease.
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            <div class="row justify-content-center mt-5 mb-5">
+                <div class="col-md-10 caloriescont shadow rounded">
+                    <div class="row">
+
+                        <div class="col-md-6">
+                            <h2 class="mt-3 mb-4">Nutritional Values </h2><span></span>
+                            <ul>
+                                <li class="servingsize">Serving Size per 100gr <span class="float-end"></span></li>
+                                <li>Carbohydrates (g): <span class="float-end">{{data.0.carbohydrates_total_g}}</span>
+                                </li>
+                                <li>Cholesterol (mg): <span class="float-end">{{data.0.cholesterol_mg}}</span></li>
+                                <li>Saturated fat (g): <span class="float-end">{{data.0.fat_saturated_g}}</span></li>
+                                <li>Total Fat (g): <span class="float-end">{{data.0.fat_total_g}}</span></li>
+                                <li>Fiber Content (g): <span class="float-end">{{data.0.fiber_g}}</span></li>
+                                <li>Potassium (mg): <span class="float-end">{{data.0.potassium_mg}}</span></li>
+                                <li>Protein (g): <span class="float-end">{{data.0.protein_g}}</span></li>
+                                <li>Sodium (mg):<span class="float-end">{{data.0.sodium_mg}}</span></li>
+                                <li>Sugar (g): <span class="float-end">{{data.0.sugar_g}}</span></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6 mb-5">
+                            <h4 class="mt-3 mb-4">To burn {{data.0.calories}} calories you will have to</h4>
+                            <div class="d-flex align-items-center mb-5">
+                                <div class="flex-shrink-0">
+                                    <img src="{% static 'images/running.png' %}" alt="Running Image">
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                                    <h5> Run </h5>
+                                    <p>you will have to run for <strong>
+                                            {{data.0.calories | div:229 | mul:60 | floatformat:0 }}</strong> Minutes</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center mb-5">
+                                <div class="flex-shrink-0">
+                                    <img src="{% static 'images/weightlifter.png' %}" alt="Weight Lifting Image">
+                                </div>
+                                <div class="flex-grow-1 ms-4">
+                                    <h5>Get a Gym Workout </h5>
+                                    <p>you will have to lift weight for <strong>
+                                            {{data.0.calories | div:484 | mul:60 | floatformat:0 }} </strong> Minutes </p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0">
+                                    <img src="{% static 'images/walking.png' %}" alt="Walking Image">
+                                </div>
+                                <div class="flex-grow-1 ms-1">
+                                    <h5> Go for a Brisk Walk </h5>
+                                    <p>you will have to brisk walk for <strong>
+                                            {{data.0.calories | div:294 | mul:60 | floatformat:0 }}</strong> Minutes</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% if data == "There was an error" %}
+                <div class="alert alert-warning"> Oh no! something went wrong.Please try again in sometime. </div>
+                {% endif %}
+                {% endif %}
+            </div>
+
+{% endblock %}

@@ -11,10 +11,13 @@ def calories(request):
         api_response = requests.get(api_url + query, headers={'X-Api-Key': os.environ['API_KEY']})
         try:
             data = json.loads(api_response.content)['items']
-            print(data)
+            #print(data)
         except Exception as e:
             data = "There was an error"
             print(e)
         return render(request, 'calories.html', {'data': data})
     else:
         return render(request, 'calories.html', {'data': ""})
+    
+def performSearch(request):
+    pass

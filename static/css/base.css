@@ -34,18 +34,92 @@ a.nav-link {
     color: var(--main-text-color)
 }
 
-img.logo {
-    width: 2rem;
+/* Logo icon */
+.logo-icon {
+  background-color: var(--main-color);
+  color: white;
+  border-radius: 50%;
+  width: 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+}
+
+/* Nav buttons */
+.nav-btn {
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  padding: 6px 15px;
+  border: 1px solid transparent;
+  background-color: white;
+  color: var(--secondary-text-color);
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.nav-btn .btn-icon {
+  background-color: #e0e0e0;
+  color: var(--secondary-text-color);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+}
+
+/* Active button */
+.nav-btn.active {
+  background-color: var(--main-color);
+  color: white;
+}
+
+.nav-btn.active .btn-icon {
+  background-color: white;
+  color: var(--main-color);
+}
+
+/* Hover effect on inactive button */
+.nav-btn:not(.active):hover {
+  color: var(--main-color);
+}
+
+.nav-btn:not(.active):hover .btn-icon {
+  background-color: var(--main-color);
+  color: white;
+}
+
+/* Input group styling */
+.input-group .input-group-text {
+  border-radius: 20px 0 0 20px;
+  border: 1px solid #ced4da;
+}
+
+.input-group .form-control {
+  border-radius: 0 20px 20px 0;
+  border: 1px solid #ced4da;
+}
+
+.search-btn {
+  border-radius: 20px 0 0 20px;
+  border: 1px solid #ced4da;
+  background-color: white;
+  color: #555;
+  transition: color 0.3s, background-color 0.3s;
+}
+
+.search-btn:hover {
+  background-color: var(--main-color);
+  color: white;
 }
 
 /* Calories Search */
 body {
   background-color: #f6fbf4;
-}
-
-.logo {
-  width: 13em;
-  height: 63px;
 }
 
 h1 {
@@ -55,17 +129,6 @@ h1 {
 h1 strong {
   font-weight: 600;
   color: #4b8673;
-}
-
-.inputstyle {
-  padding: 20px !important;
-}
-
-.whoop {
-  background-color: #5fd068;
-  width: 8em;
-  font-size: 30px !important;
-  color: #ffffff;
 }
 
 .caloriescont {

@@ -2,18 +2,25 @@
 {% load static%} {% load mathfilters %}
 
 {% block content %}
+
+<!-- Search bar -->
+  <div class="container mt-4">
+    <form method="POST">
+        {% csrf_token %}
+        <div class="input-group">
+            <button class="btn btn-outline-secondary search-btn" type="submit">
+                <i class="fas fa-search"></i>
+            </button>
+            <input id="search-input" type="text" name="query" class="form-control" placeholder="Search for individual ingredients (e.g., apple, chicken breast, rice)..." name="ingredient">
+        </div>
+    </form>
+  </div>
+
     <div class="container">
 
         <div class="row justify-content-center">
             <div class="col-md-8 text-center">
-                <form method="POST">
-                    {% csrf_token %}
-                    <div class="input-group input-group-lg mb-5 mt-5">
-                        <input type="text" name="query" class="form-control inputstyle"
-                            placeholder="search for calories in your food..." required>
-                        <button class="btn whoop" type="submit" id="button-addon2">Find calories</button>
-                    </div>
-                </form>
+                
                 {% if data %}
                 <h1> {{data.0.name | capfirst}} has a total of <strong> {{data.0.calories}} Calories</strong> per 100 grams
                     {% if data.0.calories > 300 %}

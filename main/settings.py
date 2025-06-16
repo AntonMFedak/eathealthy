@@ -42,9 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #Apps
-    'home',
     'calories',
-    'mathfilters'
+    'mathfilters',
+    'recipes',
 ]
 
 MIDDLEWARE = [

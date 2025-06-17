@@ -11,7 +11,7 @@
             <button class="btn btn-outline-secondary search-btn" type="submit">
                 <i class="fas fa-search"></i>
             </button>
-            <input id="search-input" type="text" name="query" class="form-control" placeholder="Search for individual ingredients (e.g., apple, chicken breast, rice)..." name="ingredient">
+            <input id="search-input" type="text" name="query" class="form-control" required placeholder="Search for individual ingredients (e.g., apple, chicken breast, rice)..." name="ingredient">
         </div>
     </form>
   </div>
@@ -98,6 +98,14 @@
                     </div>
                 </div>
                 {% endif %}
+
+                {% if chart %}
+                <div class="col-md-10 mt-5">
+                    <h2 class="mb-4">Calories Distribution</h2>
+                    <img src="data:image/png;base64,{{ chart|safe }}" alt="Calories Chart" class="img-fluid">
+                </div>
+                {% endif %}
+                
             </div>
 
 {% endblock %}

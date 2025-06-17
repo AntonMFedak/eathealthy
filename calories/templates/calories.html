@@ -20,8 +20,15 @@
 
         <div class="row justify-content-center">
             <div class="col-md-8 text-center">
-                
+
                 {% if data %}
+                {% endif %}
+                
+                {% if data.message == "There was an error" %}
+                <div class="alert alert-danger"> {{data.query}} is not a valid food. Please, search for an actual food or ingredient! </div>
+                {% endif %}
+
+                {% if data and data.message != "There was an error" %}
                 <h1> {{data.0.name | capfirst}} has a total of <strong> {{data.0.calories}} Calories</strong> per 100 grams
                     {% if data.0.calories > 300 %}
                     <img src="{% static 'images/shocked.png' %}" class="img-responsive" />
@@ -90,9 +97,6 @@
                         </div>
                     </div>
                 </div>
-                {% if data == "There was an error" %}
-                <div class="alert alert-warning"> Oh no! something went wrong.Please try again in sometime. </div>
-                {% endif %}
                 {% endif %}
             </div>
 

@@ -5,12 +5,15 @@
 
 <!-- Search bar -->
   <div class="container mt-4">
-    <div class="input-group">
-      <span class="input-group-text bg-white border-end-0">
-        <i class="fas fa-search"></i>
-      </span>
-      <input type="text" class="form-control border-start-0" placeholder="Search recipes, ingredients, dietary preferences...">
-    </div>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="input-group">
+            <button class="btn btn-outline-secondary search-btn" type="submit">
+                <i class="fas fa-search"></i>
+            </button>
+            <input id="search-input" type="text" name="query" class="form-control" placeholder="Search for for recipes and dietary preferences." name="ingredient">
+        </div>
+    </form>
     <h1>The rest of the page is under development.</h1>
   </div>
 

@@ -16,14 +16,14 @@ def calories(request):
         api_response = requests.get(api_url + query, headers={'X-Api-Key': os.environ['API_KEY']})
         try:
             data = json.loads(api_response.content)['items']
-            print(type(data))
             keys_names = list(data[0].keys())
             keys_values = list(data[0].values())
-            names = keys_names[1:]  # Skip the first key which is 'name'
-            values = keys_values[1:]  # Skip the first value which is the name of
+            names = keys_names[3:]  # Skip the first 3 key which is 'name'
+            values = keys_values[3:]  # Skip the first 3 value which is the name of
             chart = plot_data(names, values)
         except Exception as e:
             data = {'message':"There was an error", 'query': query}
         return render(request, 'calories.html', {'data': data, 'chart': chart})
+        #return render(request, 'calories.html', {'data': data})
     else:
         return render(request, 'calories.html', {'data': ""})
